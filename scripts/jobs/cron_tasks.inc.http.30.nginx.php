@@ -197,10 +197,10 @@ class nginx {
 					$this->nginx_data[$vhost_filename].=$this->composeSslSettings($row_ipsandports);
 				}
 
-				$this->nginx_data[$vhost_filename] .= "\t".'location ~ \.php$ {'."\n";
-				$this->nginx_data[$vhost_filename] .= "\t\t".' if (!-f $request_filename) {'."\n";
-				$this->nginx_data[$vhost_filename] .= "\t\t\t".'return 404;'."\n";
-				$this->nginx_data[$vhost_filename] .= "\t\t".'}'."\n";
+				$this->nginx_data[$vhost_filename] .= "\t".'location ~ \.php {'."\n";
+				$this->nginx_data[$vhost_filename] .= "#\t\t".' if (!-f $request_filename) {'."\n";
+				$this->nginx_data[$vhost_filename] .= "#\t\t\t".'return 404;'."\n";
+				$this->nginx_data[$vhost_filename] .= "#\t\t".'}'."\n";
 				$this->nginx_data[$vhost_filename] .= "\t\t".'fastcgi_index index.php;'."\n";
 				$this->nginx_data[$vhost_filename] .= "\t\t".'include '.Settings::Get('nginx.fastcgiparams').';'."\n";
 				$this->nginx_data[$vhost_filename] .= "\t\t".'fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;'."\n";
@@ -731,8 +731,8 @@ class nginx {
 	protected function composePhpOptions($domain, $ssl_vhost = false) {
 		$phpopts = '';
 		if ($domain['phpenabled'] == '1') {
-			$phpopts = "\t".'location ~ \.php$ {'."\n";
-			$phpopts.= "\t\t".'try_files $uri =404;'."\n";
+			$phpopts = "\t".'location ~ \.php {'."\n";
+			$phpopts.= "#\t\t".'try_files $uri =404;'."\n";
 			$phpopts.= "\t\t".'fastcgi_split_path_info ^(.+\.php)(/.+)$;'."\n";
 			$phpopts.= "\t\t".'fastcgi_index index.php;'."\n";
 			$phpopts.= "\t\t".'fastcgi_pass ' . Settings::Get('system.nginx_php_backend') . ';' . "\n";
