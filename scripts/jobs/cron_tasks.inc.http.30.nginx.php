@@ -439,6 +439,11 @@ class nginx {
 				}
 			}
 		}
+		
+		$vhost_content .= "\t".'location ~ /\.git {'."\n";
+		$vhost_content .= "\t\t".'deny all;'."\n";
+		$vhost_content .= "\t".'}'."\n";
+
 		$vhost_content .= '}' . "\n\n";
 
 		return $this->mergeVhostBlocks($vhost_content);
