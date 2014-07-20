@@ -127,6 +127,7 @@ class phpinterface_fpm {
 				$fpm_config.= 'listen.group = '.$this->_domain['loginname']."\n";
 			}
 			$fpm_config.= 'listen.mode = 0666'."\n";
+			$fpm_config.= 'listen.backlog = 4096'."\n";
 
 			if ($this->_domain['loginname'] == 'froxlor.panel') {
 				$fpm_config.= 'user = '.$this->_domain['guid']."\n";
