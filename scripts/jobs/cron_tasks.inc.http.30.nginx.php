@@ -229,6 +229,11 @@ class nginx {
 					$this->nginx_data[$vhost_filename] .= "\t\t".'fastcgi_pass ' . Settings::Get('system.nginx_php_backend') . ';' . "\n";
 				}
 				$this->nginx_data[$vhost_filename] .= "\t".'}'."\n";
+
+				$this->nginx_data[$vhost_filename] .= "\t".'location ~ /\.git {'."\n";
+				$this->nginx_data[$vhost_filename] .= "\t\t".'deny all;'."\n";
+				$this->nginx_data[$vhost_filename] .= "\t".'}'."\n";
+				
 				$this->nginx_data[$vhost_filename] .= '}' . "\n\n";
 				// End of Froxlor server{}-part
 			}
