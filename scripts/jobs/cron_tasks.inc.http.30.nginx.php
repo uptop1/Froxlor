@@ -421,14 +421,16 @@ class nginx {
 				) {
 					$vhost_content.= $this->composeSslSettings($domain);
 				}
-				$vhost_content.= $this->create_pathOptions($domain);
-				$vhost_content.= $this->composePhpOptions($domain, $ssl_vhost);
-
-				$vhost_content.= isset($this->needed_htpasswds[$domain['id']]) ? $this->needed_htpasswds[$domain['id']] . "\n" : '';
-
+				
 				if ($domain['specialsettings'] != "") {
 					$vhost_content .= $domain['specialsettings'] . "\n";
 				}
+				
+				$vhost_content.= $this->create_pathOptions($domain);
+
+				$vhost_content.= $this->composePhpOptions($domain, $ssl_vhost);
+
+				$vhost_content.= isset($this->needed_htpasswds[$domain['id']]) ? $this->needed_htpasswds[$domain['id']] . "\n" : '';
 
 				if ($_vhost_content != '') {
 					$vhost_content .= $_vhost_content;
