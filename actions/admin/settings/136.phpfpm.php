@@ -35,7 +35,7 @@ return array(
 					'settinggroup' => 'phpfpm',
 					'varname' => 'enabled_ownvhost',
 					'type' => 'bool',
-					'default' => false,
+					'default' => true,
 					'save_method' => 'storeSettingField'
 					),
 				'system_phpfpm_httpuser' => array(
@@ -80,7 +80,7 @@ return array(
 					'varname' => 'configdir',
 					'type' => 'string',
 					'string_type' => 'confdir',
-					'default' => '/etc/php-fpm.d/',
+					'default' => '/etc/php5/fpm/pool.d/',
 					'save_method' => 'storeSettingField'
 					),
 				'system_phpfpm_aliasconfigdir' => array(
@@ -124,7 +124,7 @@ return array(
 					'settinggroup' => 'phpfpm',
 					'varname' => 'reload',
 					'type' => 'string',
-					'default' => '/etc/init.d/php-fpm restart',
+					'default' => '/etc/init.d/php5-fpm restart',
 					'save_method' => 'storeSettingField'
 					),
 				'system_phpfpm_pm' => array(
