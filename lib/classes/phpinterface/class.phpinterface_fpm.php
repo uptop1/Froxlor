@@ -53,9 +53,6 @@ class phpinterface_fpm {
 					'log_errors',
 					'track_errors',
 					'html_errors',
-					'magic_quotes_gpc',
-					'magic_quotes_runtime',
-					'magic_quotes_sybase'
 			),
 			'php_admin_value' => array(
 					'open_basedir',
@@ -66,14 +63,12 @@ class phpinterface_fpm {
 					'memory_limit',
 					'post_max_size',
 					'variables_order',
-					'gpc_order',
 					'date.timezone',
 					'sendmail_path',
 					'session.gc_divisor',
 					'session.gc_probability'
 			),
 			'php_admin_flag' => array(
-					'allow_call_time_pass_reference',
 					'allow_url_fopen',
 					'cgi.force_redirect',
 					'enable_dl',
